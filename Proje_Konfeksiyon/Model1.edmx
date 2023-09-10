@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBKonfeksiyonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Hareket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HareketID" Type="int" />
+          <Property Name="MusteriID" Type="int" />
+          <Property Name="KumasCinsiID" Type="int" />
+          <Property Name="UrunID" Type="int" />
+          <Property Name="StokID" Type="int" />
+          <Property Name="GirisKG" Type="int" />
+          <Property Name="UretimKG" Type="int" />
+          <Property Name="SatisKG" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_HareketTipi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HareketAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriID" Type="int" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_KulKayit">
+          <Key>
+            <PropertyRef Name="Kul_ID" />
+          </Key>
+          <Property Name="Kul_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kul_Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kul_Tel_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="E-Posta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unvani" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiID" Type="int" />
+          <Property Name="Ad_Soyad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_KumasAlimGecmisi">
+          <Key>
+            <PropertyRef Name="Kumas_Stok_ID" />
+          </Key>
+          <Property Name="Kumas_Stok_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TedarikciID" Type="int" />
+          <Property Name="Miktar(KG)" Type="int" />
+          <Property Name="Alis_Fiyat(TL)" Type="money" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="StokKoduID" Type="int" />
+          <Property Name="KumasCinsi" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_KumasAlis">
+          <Key>
+            <PropertyRef Name="Kumas_alis_ID" />
+          </Key>
+          <Property Name="Kumas_alis_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TedarikciID" Type="int" />
+          <Property Name="Miktar(KG)" Type="int" />
+          <Property Name="Alis_Fitat(TL)" Type="money" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="StokKoduID" Type="int" />
+          <Property Name="KumasCinsi" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_KumasCinsi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KumasCinsi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Musteri_Ad_Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Musteri_Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Musteri_Tel_No" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Satis">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" />
+          <Property Name="MusteriID" Type="int" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="SatisFiyati" Type="money" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="KumasCinsiID" Type="int" />
+          <Property Name="StokKoduID" Type="int" />
+          <Property Name="Miktar(KG)" Type="int" />
+          <Property Name="BirimFiyati" Type="int" />
+          <Property Name="KDV" Type="int" />
+          <Property Name="KarOrani" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_TedarikciKayit">
+          <Key>
+            <PropertyRef Name="TedarikciID" />
+          </Key>
+          <Property Name="TedarikciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firmaİsmi" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirmaAdres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firma_Tel_No" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Uretim">
+          <Key>
+            <PropertyRef Name="UretimID" />
+          </Key>
+          <Property Name="UretimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriID" Type="int" />
+          <Property Name="Miktar(KG)" Type="int" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="UretimAdi" Type="int" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="KumasCinsiID" Type="int" />
+          <Property Name="StokKoduID" Type="int" />
+          <Property Name="Oran" Type="float" />
+        </EntityType>
+        <EntityType Name="tbl_UretimGecmisi">
+          <Key>
+            <PropertyRef Name="UretimID" />
+          </Key>
+          <Property Name="UretimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriID" Type="int" />
+          <Property Name="Miktar(KG)" Type="int" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="UretimAdi" Type="int" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="KumasCinsiID" Type="int" />
+          <Property Name="StokKoduID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_UstKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UstKategoriAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_yetki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitIslemleri" Type="int" />
+          <Property Name="Alis_Satis" Type="int" />
+          <Property Name="Stok" Type="int" />
+          <Property Name="Raporlar" Type="int" />
+          <Property Name="Hareket" Type="int" />
+          <Property Name="Kul_Kayit" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DBKonfeksiyonModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Hareket" EntityType="Self.tbl_Hareket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_HareketTipi" EntityType="Self.tbl_HareketTipi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_KulKayit" EntityType="Self.tbl_KulKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_KumasAlimGecmisi" EntityType="Self.tbl_KumasAlimGecmisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_KumasAlis" EntityType="Self.tbl_KumasAlis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_KumasCinsi" EntityType="Self.tbl_KumasCinsi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Musteri" EntityType="Self.tbl_Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Satis" EntityType="Self.tbl_Satis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TedarikciKayit" EntityType="Self.tbl_TedarikciKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Uretim" EntityType="Self.tbl_Uretim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UretimGecmisi" EntityType="Self.tbl_UretimGecmisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UstKategori" EntityType="Self.tbl_UstKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_yetki" EntityType="Self.tbl_yetki" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBKonfeksiyonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="DBKonfeksiyonModel.sysdiagrams" />
+          <EntitySet Name="tbl_HareketTipi" EntityType="DBKonfeksiyonModel.tbl_HareketTipi" />
+          <EntitySet Name="tbl_Kategori" EntityType="DBKonfeksiyonModel.tbl_Kategori" />
+          <EntitySet Name="tbl_Musteri" EntityType="DBKonfeksiyonModel.tbl_Musteri" />
+          <EntitySet Name="tbl_TedarikciKayit" EntityType="DBKonfeksiyonModel.tbl_TedarikciKayit" />
+          <EntitySet Name="tbl_UstKategori" EntityType="DBKonfeksiyonModel.tbl_UstKategori" />
+          <EntitySet Name="tbl_KumasCinsi" EntityType="DBKonfeksiyonModel.tbl_KumasCinsi" />
+          <EntitySet Name="tbl_KumasAlis" EntityType="DBKonfeksiyonModel.tbl_KumasAlis" />
+          <EntitySet Name="tbl_Hareket" EntityType="DBKonfeksiyonModel.tbl_Hareket" />
+          <EntitySet Name="tbl_KumasAlimGecmisi" EntityType="DBKonfeksiyonModel.tbl_KumasAlimGecmisi" />
+          <EntitySet Name="tbl_UretimGecmisi" EntityType="DBKonfeksiyonModel.tbl_UretimGecmisi" />
+          <EntitySet Name="tbl_Satis" EntityType="DBKonfeksiyonModel.tbl_Satis" />
+          <EntitySet Name="tbl_Uretim" EntityType="DBKonfeksiyonModel.tbl_Uretim" />
+          <EntitySet Name="tbl_KulKayit" EntityType="DBKonfeksiyonModel.tbl_KulKayit" />
+          <EntitySet Name="tbl_yetki" EntityType="DBKonfeksiyonModel.tbl_yetki" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_HareketTipi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HareketAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriID" Type="Int32" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Musteri_Ad_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Musteri_Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Musteri_Tel_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_TedarikciKayit">
+          <Key>
+            <PropertyRef Name="TedarikciID" />
+          </Key>
+          <Property Name="TedarikciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firmaİsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firma_Tel_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_UstKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UstKategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_KumasCinsi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KumasCinsi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_KumasAlis">
+          <Key>
+            <PropertyRef Name="Kumas_alis_ID" />
+          </Key>
+          <Property Name="Kumas_alis_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TedarikciID" Type="Int32" />
+          <Property Name="Miktar_KG_" Type="Int32" />
+          <Property Name="Alis_Fitat_TL_" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="StokKoduID" Type="Int32" />
+          <Property Name="KumasCinsi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Hareket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HareketID" Type="Int32" />
+          <Property Name="MusteriID" Type="Int32" />
+          <Property Name="KumasCinsiID" Type="Int32" />
+          <Property Name="UrunID" Type="Int32" />
+          <Property Name="StokID" Type="Int32" />
+          <Property Name="GirisKG" Type="Int32" />
+          <Property Name="UretimKG" Type="Int32" />
+          <Property Name="SatisKG" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_KumasAlimGecmisi">
+          <Key>
+            <PropertyRef Name="Kumas_Stok_ID" />
+          </Key>
+          <Property Name="Kumas_Stok_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TedarikciID" Type="Int32" />
+          <Property Name="Miktar_KG_" Type="Int32" />
+          <Property Name="Alis_Fiyat_TL_" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="StokKoduID" Type="Int32" />
+          <Property Name="KumasCinsi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_UretimGecmisi">
+          <Key>
+            <PropertyRef Name="UretimID" />
+          </Key>
+          <Property Name="UretimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriID" Type="Int32" />
+          <Property Name="Miktar_KG_" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="UretimAdi" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="KumasCinsiID" Type="Int32" />
+          <Property Name="StokKoduID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Satis">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" />
+          <Property Name="MusteriID" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="SatisFiyati" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="KumasCinsiID" Type="Int32" />
+          <Property Name="StokKoduID" Type="Int32" />
+          <Property Name="Miktar_KG_" Type="Int32" />
+          <Property Name="BirimFiyati" Type="Int32" />
+          <Property Name="KDV" Type="Int32" />
+          <Property Name="KarOrani" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Uretim">
+          <Key>
+            <PropertyRef Name="UretimID" />
+          </Key>
+          <Property Name="UretimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriID" Type="Int32" />
+          <Property Name="Miktar_KG_" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="UretimAdi" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="KumasCinsiID" Type="Int32" />
+          <Property Name="StokKoduID" Type="Int32" />
+          <Property Name="Oran" Type="Double" />
+        </EntityType>
+        <EntityType Name="tbl_KulKayit">
+          <Key>
+            <PropertyRef Name="Kul_ID" />
+          </Key>
+          <Property Name="Kul_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kul_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kul_Tel_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_Posta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unvani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiID" Type="Int32" />
+          <Property Name="Ad_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_yetki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitIslemleri" Type="Int32" />
+          <Property Name="Alis_Satis" Type="Int32" />
+          <Property Name="Stok" Type="Int32" />
+          <Property Name="Raporlar" Type="Int32" />
+          <Property Name="Hareket" Type="Int32" />
+          <Property Name="Kul_Kayit" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBKonfeksiyonModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_HareketTipi">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_HareketTipi">
+              <MappingFragment StoreEntitySet="tbl_HareketTipi">
+                <ScalarProperty Name="HareketAdi" ColumnName="HareketAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Kategori">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_Kategori">
+              <MappingFragment StoreEntitySet="tbl_Kategori">
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Musteri">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_Musteri">
+              <MappingFragment StoreEntitySet="tbl_Musteri">
+                <ScalarProperty Name="Musteri_Tel_No" ColumnName="Musteri_Tel_No" />
+                <ScalarProperty Name="Musteri_Adres" ColumnName="Musteri_Adres" />
+                <ScalarProperty Name="Musteri_Ad_Soyad" ColumnName="Musteri_Ad_Soyad" />
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TedarikciKayit">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_TedarikciKayit">
+              <MappingFragment StoreEntitySet="tbl_TedarikciKayit">
+                <ScalarProperty Name="Firma_Tel_No" ColumnName="Firma_Tel_No" />
+                <ScalarProperty Name="FirmaAdres" ColumnName="FirmaAdres" />
+                <ScalarProperty Name="Firmaİsmi" ColumnName="Firmaİsmi" />
+                <ScalarProperty Name="TedarikciID" ColumnName="TedarikciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UstKategori">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_UstKategori">
+              <MappingFragment StoreEntitySet="tbl_UstKategori">
+                <ScalarProperty Name="UstKategoriAdi" ColumnName="UstKategoriAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_KumasCinsi">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_KumasCinsi">
+              <MappingFragment StoreEntitySet="tbl_KumasCinsi">
+                <ScalarProperty Name="KumasCinsi" ColumnName="KumasCinsi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_KumasAlis">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_KumasAlis">
+              <MappingFragment StoreEntitySet="tbl_KumasAlis">
+                <ScalarProperty Name="KumasCinsi" ColumnName="KumasCinsi" />
+                <ScalarProperty Name="StokKoduID" ColumnName="StokKoduID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Alis_Fitat_TL_" ColumnName="Alis_Fitat(TL)" />
+                <ScalarProperty Name="Miktar_KG_" ColumnName="Miktar(KG)" />
+                <ScalarProperty Name="TedarikciID" ColumnName="TedarikciID" />
+                <ScalarProperty Name="Kumas_alis_ID" ColumnName="Kumas_alis_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Hareket">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_Hareket">
+              <MappingFragment StoreEntitySet="tbl_Hareket">
+                <ScalarProperty Name="SatisKG" ColumnName="SatisKG" />
+                <ScalarProperty Name="UretimKG" ColumnName="UretimKG" />
+                <ScalarProperty Name="GirisKG" ColumnName="GirisKG" />
+                <ScalarProperty Name="StokID" ColumnName="StokID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="KumasCinsiID" ColumnName="KumasCinsiID" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+                <ScalarProperty Name="HareketID" ColumnName="HareketID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_KumasAlimGecmisi">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_KumasAlimGecmisi">
+              <MappingFragment StoreEntitySet="tbl_KumasAlimGecmisi">
+                <ScalarProperty Name="KumasCinsi" ColumnName="KumasCinsi" />
+                <ScalarProperty Name="StokKoduID" ColumnName="StokKoduID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Alis_Fiyat_TL_" ColumnName="Alis_Fiyat(TL)" />
+                <ScalarProperty Name="Miktar_KG_" ColumnName="Miktar(KG)" />
+                <ScalarProperty Name="TedarikciID" ColumnName="TedarikciID" />
+                <ScalarProperty Name="Kumas_Stok_ID" ColumnName="Kumas_Stok_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UretimGecmisi">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_UretimGecmisi">
+              <MappingFragment StoreEntitySet="tbl_UretimGecmisi">
+                <ScalarProperty Name="StokKoduID" ColumnName="StokKoduID" />
+                <ScalarProperty Name="KumasCinsiID" ColumnName="KumasCinsiID" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="UretimAdi" ColumnName="UretimAdi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Miktar_KG_" ColumnName="Miktar(KG)" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="UretimID" ColumnName="UretimID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Satis">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_Satis">
+              <MappingFragment StoreEntitySet="tbl_Satis">
+                <ScalarProperty Name="KarOrani" ColumnName="KarOrani" />
+                <ScalarProperty Name="KDV" ColumnName="KDV" />
+                <ScalarProperty Name="BirimFiyati" ColumnName="BirimFiyati" />
+                <ScalarProperty Name="Miktar_KG_" ColumnName="Miktar(KG)" />
+                <ScalarProperty Name="StokKoduID" ColumnName="StokKoduID" />
+                <ScalarProperty Name="KumasCinsiID" ColumnName="KumasCinsiID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="SatisFiyati" ColumnName="SatisFiyati" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Uretim">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_Uretim">
+              <MappingFragment StoreEntitySet="tbl_Uretim">
+                <ScalarProperty Name="Oran" ColumnName="Oran" />
+                <ScalarProperty Name="StokKoduID" ColumnName="StokKoduID" />
+                <ScalarProperty Name="KumasCinsiID" ColumnName="KumasCinsiID" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="UretimAdi" ColumnName="UretimAdi" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Miktar_KG_" ColumnName="Miktar(KG)" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="UretimID" ColumnName="UretimID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_KulKayit">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_KulKayit">
+              <MappingFragment StoreEntitySet="tbl_KulKayit">
+                <ScalarProperty Name="Ad_Soyad" ColumnName="Ad_Soyad" />
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+                <ScalarProperty Name="Unvani" ColumnName="Unvani" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="E_Posta" ColumnName="E-Posta" />
+                <ScalarProperty Name="Kul_Tel_No" ColumnName="Kul_Tel_No" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Kul_Ad" ColumnName="Kul_Ad" />
+                <ScalarProperty Name="Kul_ID" ColumnName="Kul_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_yetki">
+            <EntityTypeMapping TypeName="DBKonfeksiyonModel.tbl_yetki">
+              <MappingFragment StoreEntitySet="tbl_yetki">
+                <ScalarProperty Name="Kul_Kayit" ColumnName="Kul_Kayit" />
+                <ScalarProperty Name="Hareket" ColumnName="Hareket" />
+                <ScalarProperty Name="Raporlar" ColumnName="Raporlar" />
+                <ScalarProperty Name="Stok" ColumnName="Stok" />
+                <ScalarProperty Name="Alis_Satis" ColumnName="Alis_Satis" />
+                <ScalarProperty Name="KayitIslemleri" ColumnName="KayitIslemleri" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
